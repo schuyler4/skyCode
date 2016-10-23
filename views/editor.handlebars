@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+<script src="codemirror/lib/codemirror.js"></script>
+
+<ul class="tab">
+  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab('editor')">Editor</a></li>
+  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab('result')">Results</a></li>
+  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab('terminal')">Terminal</a></li>
+</ul>
+
+<div id="editorTab">
+  <textarea id="editor"></textarea>
+  <button id="submitButton">Run</button>
+</div>
+
+<div id="resultTab">
+  <iframe id="result"></iframe>
+</div>
+
+<div id="terminalTab">
+
+</div>
+
+
+<script src="javascript/editor.js"></script>
