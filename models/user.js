@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt-nodejs');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const lodash = require('lodash');
 
 const userSchema = mongoose.Schema({
   email: String,
@@ -56,12 +57,18 @@ exports.create = function(email, password) {
   }
 }
 
-exports.login = function(email, password) {
-  const promise = User.findOne({email: email});
+exports.findUser = function(email) {
+  const promise = User.find({email : {$in: lodash.map(collected, 'Project')}});
   return promise;
 }
 
-exports.findOne = function(email) {
-  const promise = User.findOne({email: email});
-  return promise;
+exports.createProject = function(email, project) {
+  User.findOneAndUpdate({email: email}, {$push:{projects: project}},
+    function(error, project) {
+      if(error)
+        console.error(error);
+      console.log("the email is " + email);
+      console.log("the project is " + project);
+      return true;
+    });
 }

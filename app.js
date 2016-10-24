@@ -30,6 +30,7 @@ app.use(bodyParser.json());
 mongoose.connect(secret.database);
 mongoose.Promise = blueBird;
 
+require('./routes/code.js')(app);
 require('./routes/user.js')(app);
 require('./routes/basic.js')(app);
 
